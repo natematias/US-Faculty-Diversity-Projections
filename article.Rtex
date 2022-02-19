@@ -52,13 +52,46 @@ Please provide an abstract of no more than 250 words in a single paragraph. Abst
 \thispagestyle{firststyle}
 \ifthenelse{\boolean{shortarticle}}{\ifthenelse{\boolean{singlecolumn}}{\abscontentformatted}{\abscontent}}{}
 
-% If your first paragraph (i.e. with the \dropcap) contains a list environment (quote, quotation, theorem, definition, enumerate, itemize...), the line after the list may have some extra indentation. If this is the case, add \parshape=0 to the end of the list environment.
-\dropcap{T}his is the introduction paragraph for the article
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% PAPER STARTS HERE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\dropcap{T}his is the introduction paragraph for the article. Including an 
+
+\Sexpr{example.variable}
+
+This is a sentence (JNM: Include datapoint here).
+
 
 
 \section*{Results}
 
+
 \section*{Discussion}
+
+
+\matmethods{Please describe your materials and methods here. This can be more than one paragraph, and may contain subsections and equations as required. 
+
+\subsection*{Subsection for Method}
+Example text for subsection.
+}
+
+\showmatmethods{} % Display the Materials and Methods section
+
+\acknow{Please include your acknowledgments here, set in a single paragraph. Please do not include any acknowledgments in the Supporting Information, or anywhere else in the manuscript.}
+
+\showacknow{} % Display the acknowledgments section
+
+% Bibliography
+\bibliography{references}
+
+\end{document}
+
+
+%%%%%%%%%%%%%%% DOCUMENTATION %%%%%%%%%%%%%%%
+%% (formerly under the introduction in the template file)
+
 
 % \subsection*{Author Affiliations}
 
@@ -149,22 +182,3 @@ Please provide an abstract of no more than 250 words in a single paragraph. Abst
 
 % Supply .xlsx, .csv, .txt, .rtf, or .pdf files. This file type will be published in raw format and will not be edited or composed.
 
-
-
-
-\matmethods{Please describe your materials and methods here. This can be more than one paragraph, and may contain subsections and equations as required. 
-
-\subsection*{Subsection for Method}
-Example text for subsection.
-}
-
-\showmatmethods{} % Display the Materials and Methods section
-
-\acknow{Please include your acknowledgments here, set in a single paragraph. Please do not include any acknowledgments in the Supporting Information, or anywhere else in the manuscript.}
-
-\showacknow{} % Display the acknowledgments section
-
-% Bibliography
-\bibliography{references}
-
-\end{document}
