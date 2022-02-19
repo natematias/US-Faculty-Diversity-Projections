@@ -446,6 +446,6 @@
 <text x='1034.19' y='548.13' text-anchor='middle' style='font-size: 20.00px; font-weight: bold; fill: #4D4D4D; font-family: Arial;' textLength='44.50px' lengthAdjust='spacingAndGlyphs'>2050</text>
 <text x='1276.01' y='548.13' text-anchor='middle' style='font-size: 20.00px; font-weight: bold; fill: #4D4D4D; font-family: Arial;' textLength='44.50px' lengthAdjust='spacingAndGlyphs'>2060</text>
 <text x='52.40' y='567.87' style='font-size: 20.00px; fill: #666666; font-family: Arial;' textLength='38.91px' lengthAdjust='spacingAndGlyphs'>year</text>
-<text transform='translate(19.83,267.14) rotate(-90)' text-anchor='middle' style='font-size: 20.00px; fill: #666666; font-family: Arial;' textLength='190.07px' lengthAdjust='spacingAndGlyphs'>Percent URM Faculty</text>
+<text transform='translate(19.83,267.14) rotate(-90)' text-anchor='middle' style='font-size: 20.00px; fill: #666666; font-family: Arial;' textLength='173.40px' lengthAdjust='spacingAndGlyphs'>Percent UR Faculty</text>
 </g>
 </svg>
