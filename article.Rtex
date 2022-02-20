@@ -13,7 +13,7 @@
 load("data/paper-data.RData")
 @
 
-\title{Template for preparing your research report submission to PNAS using Overleaf}
+\title{U.S. Universities Are Making No Progress Toward Demographic Parity of Tenure-Track Faculty}
 
 % Use letters for affiliations, numbers to show equal authorship (if applicable) and to indicate the corresponding author
 \author[a,c,1]{Author One}
@@ -64,6 +64,15 @@ This is a sentence (JNM: Include datapoint here).
 
 
 \section*{Results}
+
+
+\begin{figure}[H]%[tbhp]
+\centering
+\includegraphics[width=1\linewidth]{figures/institution_group_projections.pdf}
+\caption{U.S. higher education will never achieve demographic parity among tenure-track faculty, at current rates of change (n= \Sexpr{prettyNum(nrow(subset(institution.models.df, dv==dv.var)),big.mark="," )}, p<0.0001,$R^2 = \Sexpr{prettyNum(summary(linear.m1)$r.squared, digits=2)})$.  Charts show estimated rates of change for all U.S. Institutions, Liberal Arts Colleges, Ivy+ Institutions, and R1 Institutions. Within an institution group, gray lines are individual institutions, green lines are the projected trend for the whole group, and orange lines are example institutions near the median rate of change for the institution group.}
+\label{fig:urm-faculty}
+\end{figure}
+
 
 
 \section*{Discussion}
