@@ -83,12 +83,12 @@ How can U.S. higher education achieve demographic parity among tenure-track facu
 If higher education as a sector committed to the goal of demographic parity by 2050, would they have access to a cohort of qualified candidates? To investigate this question, we estimate the cumulative number of U.S. citizens from under-represented groups who have received PhDs since 2007 who have not been hired into tenure-track faculty positions. As illustrated in Figure 
 
 
-% \begin{figure}[H]%[tbhp]
-% \centering
-% \includegraphics[width=1\linewidth]{unhired_phds_estimate.pdf}
-% \caption{Caption here}
-% \label{fig:unhired}
-% \end{figure}
+\begin{figure}[H]%[tbhp]
+\centering
+\includegraphics[width=1\linewidth]{unhired_phds_estimate.pdf}
+\caption{The cumulative number of un-hired PhDs from under-represented groups in the U.S. increases by \Sexpr{} on average per year (p<0.0001).}
+\label{fig:unhired}
+\end{figure}
 
 
 
