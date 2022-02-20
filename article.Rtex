@@ -71,7 +71,15 @@ This is a sentence (JNM: Include datapoint here).
 \section*{Discussion}
 
 
-\matmethods{Please describe your materials and methods here. This can be more than one paragraph, and may contain subsections and equations as required. 
+\matmethods{
+Observations of higher education institutions are based on  2013-2021 data from the Integrated Postsecondary Education Data System (CITE). This dataset includes all U.S. institutions that are applicants in any federal student financial aid program. We annotate universities in the IPEDS dataset with their classification in the 2018 Carnegie Classification (CITE), the 2021 U.S. News and World Report classification (CITE, timestamped), and the Opportunity Insights classification of Ivy+ institutions (CITE). Institutions are included in the dataset if they reported at least one tenure-track faculty member during the observation period and if they are classified in any way in the Carnegie classification system.
+
+Groups are considered under-represented if they are 
+
+The percentage of under-represented tenure-track faculty is estimated by 
+
+
+
 
 \subsection*{Subsection for Method}
 Example text for subsection.
