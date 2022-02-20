@@ -25,7 +25,7 @@ load("data/paper-data.RData")
 \affil[c]{Affiliation Three}
 
 % Please give the surname of the lead author for the running footer
-\leadauthor{Lead author last name} 
+\leadauthor{Lead author last name}
 
 % Please add a significance statement to explain the relevance of your work
 \significancestatement{Authors must submit a 120-word maximum statement about the significance of their research paper written at a level understandable to an undergraduate educated scientist outside their field of speciality. The primary goal of the significance statement is to explain the relevance of the work in broad context to a broad readership. The significance statement appears in the paper itself and is required for all research papers.}
@@ -59,8 +59,6 @@ Please provide an abstract of no more than 250 words in a single paragraph. Abst
 
 \dropcap{T}his is the introduction paragraph for the article. Including an 
 
-\Sexpr{example.variable}
-
 This is a sentence (JNM: Include datapoint here).
 
 
@@ -72,18 +70,32 @@ This is a sentence (JNM: Include datapoint here).
 
 
 \matmethods{
-Observations of higher education institutions are based on  2013-2021 data from the Integrated Postsecondary Education Data System (CITE). This dataset includes all U.S. institutions that are applicants in any federal student financial aid program. We annotate universities in the IPEDS dataset with their classification in the 2018 Carnegie Classification (CITE), the 2021 U.S. News and World Report classification (CITE, timestamped), and the Opportunity Insights classification of Ivy+ institutions (CITE). Institutions are included in the dataset if they reported at least one tenure-track faculty member during the observation period and if they are classified in any way in the Carnegie classification system.
+Observations of higher education institutions are based on  2013-2021 data from the Integrated Postsecondary Education Data System (CITE). This dataset includes all  U.S. institutions that are applicants in any federal student financial aid program. We annotate universities in the IPEDS dataset with their classification in the 2018 Carnegie Classification (CITE), the 2021 U.S. News and World Report classification (CITE, timestamped), and the Opportunity Insights classification of Ivy+ institutions (CITE). Institutions are included in the dataset if they reported at least one tenure-track faculty member during the observation period, if they are classified in any way in the Carnegie classification system. A total of \Sexpr{prettyNum(nrow(subset(institution.models.df, dv==dv.var)),big.mark="," )} institutions meet these criteria.
 
-Groups are considered under-represented if they are 
+In this paper, we consider a faculty member to be part of an under-represented group if they are recorded within the IPEDs data as Black or African-American; Hispanic or Latino; American Indian or Alaska Native; Native Hawaiian / Pacific Islander; or multiracial. We estimate the total percentage of under-represented tenured and un-tenured tenure-track faculty by dividing the sum of faculty in these groups by the total number of tenured and un-tenured tenure-track faculty for an institution or collection of institutions. 
 
-The percentage of under-represented tenure-track faculty is estimated by 
+\subsection*{Defining Demographic Parity}
+To estimate the percentage of currently under-represented faculty who would be required for demographic parity, we use 2017 population projections based on the 2010 U.S. census (cite). We then calculate the mean percentage of tenure-track faculty in the U.S. who were not classified as nonresident aliens between 2013 and 2021 and assume that this percentage will remain stable. 
+
+To derive the proportion required for demographic parity in given year, we multiply the projected proportion of under-represented groups in the population by the  observed or projected proportion of tenure-track, U.S. resident, under-represented faculty for that year.
+
+\subsection*{Institution and Institution-Group Projections}
+For every institution and every institution group in the IPEDS, Carnegie, U.S. News, and Opportunity Insights datsets, we generate an estimate of change in the percentage of under-represented tenure-track faculty using an only least squares regression model in the following specification:
+
+$Y_{pct} = Intercept + \beta_{Year} + \epsilon$
+
+Institution-level coefficients, p-values, and standard errors for each of the \Sexpr{prettyNum(nrow(subset(institution.models.df, dv==dv.var)),big.mark="," )} models, along with full analysis code, are available on the Open Science Framework.\footnote{INCLUDE LINK HERE}
+
+Across all institutions in the dataset from 2013-2018, the percentage of under-represented tenure-track faculty increased by \Sexpr{prettyNum(coef(summary(linear.m1))['year.zeroed',]['Estimate']*100, digits=2)} percentage points per year (p<0.0001 
+%R^2 = \Sexpr{prettyNum(summary(linear.m1)$r.squared, digits=2)}
+). Within Ivy+ universities, the percentage increased by \Sexpr{prettyNum(subset(ivyplus.models.df, subgroup_value=="True" & dv=="tenured_un_tenured_black_latino_american_indian_alaska_native_hawaiian_pacific_multiracial_total_pct")$year_estimate*100, digits=2)} percentage points per year (p<0.0001). Within R1 universities, PhD-granting institutions classified with "very high research activity", the percentage increased by \Sexpr{prettyNum(subset(carnegie.models.df, subgroup_value==15 & dv=="tenured_un_tenured_black_latino_american_indian_alaska_native_hawaiian_pacific_multiracial_total_pct")$year_estimate*100, digits=2)}  per year (p<0.0001). Within National Liberal Arts Colleges, the percentage increased by \Sexpr{prettyNum(subset(usnews.models.df, subgroup_value=='National Liberal Arts Colleges' & dv=="tenured_un_tenured_black_latino_american_indian_alaska_native_hawaiian_pacific_multiracial_total_pct")$year_estimate*100, digits=2)} percentage points per year (p=\Sexpr{prettyNum(subset(usnews.models.df, subgroup_value=='National Liberal Arts Colleges' & dv=="tenured_un_tenured_black_latino_american_indian_alaska_native_hawaiian_pacific_multiracial_total_pct")$year_pvalue, digits=1)}).
+
+\subsection*{Estimating Un-hired PhDs}
+To simulate the number of un-hired under-represented PhDs, we combine data from the National Science Foundation Survey of Earned Doctorates with IPEDS data about tenure-track faculty. To offer a conservative estimate, we imagine a scenario where no under-represented groups received PhDs before 2007, where 2013 is the first hiring year, and play the simulation forward. Since the average time to tenure is 7 years, the simulation assumes that the number of faculty hired in a given year is 1/7 of the total un-tenured tenure-track faculty the following year. For each year between 2013 and 2020, we subtract the total number of hired under-represented faculty from the cumulative sum of earned PhDs.
 
 
 
-
-\subsection*{Subsection for Method}
-Example text for subsection.
-}
+} %%% end of methods section
 
 \showmatmethods{} % Display the Materials and Methods section
 
