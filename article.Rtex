@@ -8,6 +8,8 @@
 
 \graphicspath{ {./figures/} }
 
+\renewcommand{\linenumbers}{}
+
 % Load paper data
 <<init, echo=FALSE>>=
 load("data/paper-data.RData")
@@ -28,19 +30,22 @@ load("data/paper-data.RData")
 \leadauthor{Lead author last name}
 
 % Please add a significance statement to explain the relevance of your work
-\significancestatement{Authors must submit a 120-word maximum statement about the significance of their research paper written at a level understandable to an undergraduate educated scientist outside their field of speciality. The primary goal of the significance statement is to explain the relevance of the work in broad context to a broad readership. The significance statement appears in the paper itself and is required for all research papers.}
+\significancestatement{
+Colleges and universities often make announcements about increases in the diversity of tenure-track faculty, but are those changes keeping pace with changes in the population? In this analysis of every higher education institution in the U.S., we find that at current rates of change, faculty diversity in the U.S. will never reach parity with the general population. Institutions sometimes argue that these patterns are caused by a lack of qualified candidates. Using national data on earned doctorates, we show evidence of tens of thousands of qualified, eligible candidates. While higher education needs to increase the rate of change by 3.5 times to reach demographic parity by 2050, our analyses suggest there is an ample supply of faculty of color to meet the demand.
+}
 
 % Please include corresponding author, author contribution and author declaration information
 \authorcontributions{Please provide details of author contributions here.}
-\authordeclaration{Please declare any competing interests here.}
-\equalauthors{\textsuperscript{1}A.O.(Author One) contributed equally to this work with A.T. (Author Two) (remove if not applicable).}
+%\authordeclaration{Please declare any competing interests here.}
+% \equalauthors{\textsuperscript{1}A.O.(Author One) contributed equally to this work with A.T. (Author Two) (remove if not applicable).}
 \correspondingauthor{\textsuperscript{2}To whom correspondence should be addressed. E-mail: author.two\@email.com}
 
 % At least three keywords are required at submission. Please provide three to five keywords, separated by the pipe symbol.
 \keywords{Keyword 1 $|$ Keyword 2 $|$ Keyword 3 $|$ ...} 
 
 \begin{abstract}
-Please provide an abstract of no more than 250 words in a single paragraph. Abstracts should explain to the general reader the major contributions of the article. References in the abstract must be cited in full within the abstract itself and cited in the text.
+Colleges and universities across the U.S. have publicized commitments to recruit and retain faculty of color, reporting increases in the percentage of faculty from under-represented groups. Yet individual trends may not always reflect sector-wide changes. Are U.S. higher education and groups of peer institutions making progress toward demographic parity or falling behind? And to what degree are these patterns bounded by a ``leak in the pipeline'' of qualified applicants? In this paper, we model changes over time in tenure-track faculty diversity for every higher education institution in the US and their peer institutions. We find that at current rates of change, faculty diversity in the U.S. will never reach demographic parity with the general population. To achieve racial parity by 2050, colleges and universities will need to diversify their faculty at 3.5 times the current pace. Is this change achievable given the supply of eligible PhDS? To test the pipeline hypothesis, we analyzed data from the National Survey of Earned Doctorates, finding that between 2007 and 2019, over 45,000 newly minted PhDs from underrepresented racial groups were not hired into tenure-track positions. These findings provide evidence that the pipeline for a racially diverse faculty is plentiful, and that colleges and universities in the US must restructure and re-pace their recruitment and retention efforts to achieve their goals of racial equity and diversity among their faculty.
+
 \end{abstract}
 
 \dates{This manuscript was compiled on \today}
@@ -57,17 +62,23 @@ Please provide an abstract of no more than 250 words in a single paragraph. Abst
 %% PAPER STARTS HERE
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\dropcap{T}his is the introduction paragraph for the article. Including an 
+\dropcap{U}S colleges and universities have spent at least a decade bemoaning the lack of racial diversity in their institutions. Part of their angst about the state of their institutions has come from external pressure. For example, in 2012, the President's Council of Advisors on Science and Technology noted that it was a strategic necessity for the U.S. to increase the size of its scientific workforce, and diversity in that workforce \cite{holdren_engage_2012}. But it is not just the government that has called for greater diversity in the academic labor market, universities themselves have declared diversity, equity, and inclusion to be central to their missions and have made pledges to increase faculty diversity (Lewis, 2022). Despite all of the ink that has been spilled on this topic, universities seem to have little results to show for their ostensible efforts \cite{matias_universities_2021}. Indeed, ten years later, the current President's Council of Advisors on Science and Technology are making essentially the same call to action that their predecessors made a decade, and two presidential administrations, ago. 
 
-This is a sentence (JNM: Include datapoint here).
+Why have universities made such little progress? One common refrain is that there is simply a "pipeline problem"--there are too few students of color (and in some fields, too few women) available to fill in the faculty ranks as positions open up. If there are not enough students on the pathway to the professoriate, then there is simply nothing universities can do; they would have to continue the practice of hiring primarily white and male faculty to fill their faculty ranks. If there is diversity in the pipeline, however, then the common refrain would not be a sufficient explanation for the lack of progress in diversifying American colleges and universities. 
 
+In the current paper, we examine whether the pipeline hypothesis is a sufficient explanation for the lack of diversity in American universities by combining three comprehensive national data sets to build models of faculty diversity, and projections of how diversity might (or might not change) in the future. First, we model the changes in faculty diversity from 2013 to 2021 for all of higher education, institution groups, and individual institutions. Second, we use U.S. Census projections to examine whether faculty composition is changing at rates that are making higher education more diverse, or whether interventions might be necessary to move the faculty diversity trajectory closer to broader demographic parity. Finally, we estimate the number of qualified underrepresented minority faculty that are available for universities to hire if they chose to. If there is diversity in the pipeline, then the common refrain would not be a sufficient explanation of the lack of progress in diversifying college in the US. Indeed, higher education would then need to consider other institutional barriers and solutions towards its diversity goals (Griffin, 2020).
 
+[[JNM: Here is the Griffin Citation: Griffin, K. A. (2020). Institutional barriers, strategies, and benefits to increasing the representation of women and men of color in the professoriate. In L. W. Perna (Ed.), Higher education: Handbook of theory and research (Vol. 35, pp. 1–73). Springer]]
 
 \section*{Results}
 
-We find that the diversity of tenure-track faculty is not increasing any faster than the the diversity of the American public. In a linear regression model across \Sexpr{prettyNum(nrow(subset(institution.models.df, dv==dv.var)),big.mark="," )} higher education institutions, we find that the percentage of under-represented tenure-track faculty increased by \Sexpr{prettyNum(coef(summary(linear.m1))['year.zeroed',][['Estimate']]*100, digits=2)} percentage points each year on average between the 2013 and 2020 academic years (p<0.0001,$R^2 = \Sexpr{prettyNum(summary(linear.m1)$r.squared, digits=2)}$). During that period and into the future, the U.S. Census protects that the percentage of demographic groups included in that percentage will increase by 0.2 percentage points per year. At this rate, U.S. higher education will never achieve demographic parity among tenure-track faculty (Figure \ref{fig:urm-faculty}: All U.S. Institutions).
+We find that the diversity of tenure-track faculty in the U.S. is not increasing any faster than the diversity of the American public. In a linear regression model across \Sexpr{prettyNum(nrow(subset(institution.models.df, dv==dv.var)),big.mark="," )} higher education institutions, the percentage of under-represented tenure-track faculty increased by \Sexpr{prettyNum(coef(summary(linear.m1))['year.zeroed',][['Estimate']]*100, digits=2)} percentage points each year on average between the 2013 and 2020 academic years (p<0.0001,$R^2 = \Sexpr{prettyNum(summary(linear.m1)$r.squared, digits=2)}$). During that period and into the future, the U.S. Census protects that the percentage of demographic groups under-represented among faculty will increase by 0.2 percentage points per year. At this rate, U.S. higher education will never achieve demographic parity among tenure-track faculty (Figure \ref{fig:urm-faculty}: All).
 
-Despite substantial variability between colleges and universities, sector-wide patterns are similar within common groupings of higher education institutions. Among Ivy+ Institutions, the percentage of under-represented tenure-track faculty increased by \Sexpr{prettyNum(subset(ivyplus.models.df, subgroup_value=="True" & dv=="tenured_un_tenured_black_latino_american_indian_alaska_native_hawaiian_pacific_multiracial_total_pct")$year_estimate*100, digits=2)} percentage points per year (p<0.0001). Within R1 universities, PhD-granting institutions classified with "very high research activity", the percentage increased by \Sexpr{prettyNum(subset(carnegie.models.df, subgroup_value==15 & dv=="tenured_un_tenured_black_latino_american_indian_alaska_native_hawaiian_pacific_multiracial_total_pct")$year_estimate*100, digits=2)}  per year (p<0.0001). Within National Liberal Arts Colleges, the diversity of tenure-track faculty is increasing by \Sexpr{prettyNum(subset(usnews.models.df, subgroup_value=='National Liberal Arts Colleges' & dv=="tenured_un_tenured_black_latino_american_indian_alaska_native_hawaiian_pacific_multiracial_total_pct")$year_estimate*100, digits=2)} percentage points per year (p=\Sexpr{prettyNum(subset(usnews.models.df, subgroup_value=='National Liberal Arts Colleges' & dv=="tenured_un_tenured_black_latino_american_indian_alaska_native_hawaiian_pacific_multiracial_total_pct")$year_pvalue, digits=1)}), faster than the rate of change in the population. Due to this higher rate of change, the percentage of under-represented tenure-track faculty at National Liberal Arts Colleges in 2060 will only be \Sexpr{prettyNum(nla.prop.diff*100, digits=2)} percentage points behind the general population. In contrast, U.S. higher education overall is projected to be behind the general population by \Sexpr{prettyNum(us.prop.diff*100, digits=2)} percentage points in 2060.
+Despite variation in rates of change between institutions, these sector-wide  patterns are similar between peer groups. Among Ivy+ Institutions, for instance, the percentage of under-represented tenure-track faculty increased by \Sexpr{prettyNum(subset(ivyplus.models.df, subgroup_value=="True" & dv=="tenured_un_tenured_black_latino_american_indian_alaska_native_hawaiian_pacific_multiracial_total_pct")$year_estimate*100, digits=2)} percentage points per year (p<0.0001). Across R1 universities, the percentage increased by \Sexpr{prettyNum(subset(carnegie.models.df, subgroup_value==15 & dv=="tenured_un_tenured_black_latino_american_indian_alaska_native_hawaiian_pacific_multiracial_total_pct")$year_estimate*100, digits=2)}  per year (p<0.0001). Among National Liberal Arts Colleges, the percentage increased by \Sexpr{prettyNum(subset(usnews.models.df, subgroup_value=='National Liberal Arts Colleges' & dv=="tenured_un_tenured_black_latino_american_indian_alaska_native_hawaiian_pacific_multiracial_total_pct")$year_estimate*100, digits=2)} percentage points per year (p=\Sexpr{prettyNum(subset(usnews.models.df, subgroup_value=='National Liberal Arts Colleges' & dv=="tenured_un_tenured_black_latino_american_indian_alaska_native_hawaiian_pacific_multiracial_total_pct")$year_pvalue, digits=1)}), faster than the rate of change in the population. Due to this higher rate of change, the percentage of under-represented tenure-track faculty at National Liberal Arts Colleges in 2060 will only be \Sexpr{prettyNum(nla.prop.diff*100, digits=2)} percentage points behind the general population, compared to a gap of \Sexpr{prettyNum(us.prop.diff*100, digits=2)} percentage points across all institutions.
+
+How can U.S. higher education achieve demographic parity among tenure-track faculty within the next three decades (i.e., within our lifetime)? We estimate that the sector could achieve demographic parity by 2050 by collectively increasing under-represented faculty by one percentage point per year overall---an increase of \Sexpr{prettyNum(rate.increase.2050*100, digits=2)} percentage points on the current rate of change.
+
+Conversations about faculty diversity often invoke a ``leaky pipeline,'' despite conflicting empirical evidence \cite{gibbs_jr_decoupling_2016, griffin_institutional_2019}. If higher education as a sector committed to demographic parity by 2050, would they have access to qualified candidates? To investigate this question, we estimate the cumulative number of U.S. citizens from under-represented groups who have received PhDs since 2007 and who have not yet been hired into tenure-track faculty positions. Between 2007 and the 2019 job market year, U.S. higher education granted \Sexpr{prettyNum(subset(merged.df, year==2020)$cumulative_unhired_prev_year, big.mark=",")} PhDs to people from under-represented groups who were not hired into tenure-track positions (Figure \ref{fig:unhired}). This cumulative sum of un-hired PhDs is equivalent to \Sexpr{prettyNum((subset(merged.df, year==2020)$cumulative_unhired_prev_year / subset(year.df, year==2020)$tenured_un_tenured_Grand_total_sum)*100, digits=4)} percent of all tenure-track faculty in the United States in 2020.
 
 
 \begin{figure}[H]%[tbhp]
@@ -78,46 +89,44 @@ Despite substantial variability between colleges and universities, sector-wide p
 \end{figure}
 
 
-How can U.S. higher education achieve demographic parity among tenure-track faculty within our lifetime? Based on our statistical models, we estimate that institutions could achieve demographic parity by 2050 by collectively increasing the proportion of under-represented faculty by one percentage point per year overall--- an increase of \Sexpr{prettyNum(rate.increase.2050*100, digits=2)} percentage points on higher education's current rate of change.
-
-If higher education as a sector committed to the goal of demographic parity by 2050, would they have access to a cohort of qualified candidates? To investigate this question, we estimate the cumulative number of U.S. citizens from under-represented groups who have received PhDs since 2007 who have not been hired into tenure-track faculty positions. As illustrated in Figure 
-
-
-% \begin{figure}[H]%[tbhp]
-% \centering
-% \includegraphics[width=1\linewidth]{unhired_phds_estimate.pdf}
-% \caption{Caption here}
-% \label{fig:unhired}
-% \end{figure}
 
 
 
-\section*{Discussion}
+\begin{figure}[H]%[tbhp]
+\centering
+\includegraphics[width=1\linewidth]{unhired_phds_estimate.pdf}
+\caption{Between 2013 and 2020, the cumulative number of un-hired PhDs from under-represented groups in the U.S. increased by \Sexpr{prettyNum(round(unhired.increase.estimate), big.mark=",")} on average per year (p<0.0001).}
+\label{fig:unhired}
+\end{figure}
+
+
+
+%\section*{Discussion}
 
 
 \matmethods{
-Observations of higher education institutions are based on  2013-2021 data from the Integrated Postsecondary Education Data System (CITE). This dataset includes all  U.S. institutions that are applicants in any federal student financial aid program. We annotate universities in the IPEDS dataset with their classification in the 2018 Carnegie Classification (CITE), the 2021 U.S. News and World Report classification (CITE, timestamped), and the Opportunity Insights classification of Ivy+ institutions (CITE). Institutions are included in the dataset if they reported at least one tenure-track faculty member during the observation period, if they are classified in any way in the Carnegie classification system. A total of \Sexpr{prettyNum(nrow(subset(institution.models.df, dv==dv.var)),big.mark="," )} institutions meet these criteria.
+Observations of higher education institutions are based on  2013-2021 data from the Integrated Postsecondary Education Data System \cite{noauthor_integrated_nodate}. This dataset includes all  U.S. institutions that are applicants in any federal student financial aid program. We annotate universities in the IPEDS dataset with their classification in the 2018 Carnegie Classification \cite{indiana_university_center_for_postsecondary_research_carnegie_nodate}, the 2021 U.S. News and World Report classification \cite{morse_best_2021}, and the Opportunity Insights classification of Ivy+ institutions \cite{noauthor_college_2018}. Institutions are included in the dataset if they reported at least one tenure-track faculty member during the period and included in the Carnegie classification system. A total of \Sexpr{prettyNum(nrow(subset(institution.models.df, dv==dv.var)),big.mark="," )} institutions meet these criteria.
 
-In this paper, we consider a faculty member to be part of an under-represented group if they are recorded within the IPEDs data as Black or African-American; Hispanic or Latino; American Indian or Alaska Native; Native Hawaiian / Pacific Islander; or multiracial. We estimate the total percentage of under-represented tenured and un-tenured tenure-track faculty by dividing the sum of faculty in these groups by the total number of tenured and un-tenured tenure-track faculty for an institution or collection of institutions. 
+In this paper, we consider a faculty member to be part of an under-represented group if they are recorded within the IPEDs data as Black or African-American; Hispanic or Latino; American Indian or Alaska Native; Native Hawaiian / Pacific Islander; or multiracial. We estimate the total percentage of under-represented tenured and un-tenured tenure-track faculty by dividing the sum of under-represented faculty by the total number of tenured and un-tenured tenure-track faculty for an institution or collection of institutions. 
 
 \subsection*{Defining Demographic Parity}
-To estimate the percentage of currently under-represented faculty who would be required for demographic parity, we use 2017 population projections based on the 2010 U.S. census (cite). We then calculate the mean percentage of tenure-track faculty in the U.S. who were not classified as nonresident aliens between 2013 and 2021 and assume that this percentage will remain stable. 
-
-To derive the proportion required for demographic parity in given year, we multiply the projected proportion of under-represented groups in the population by the  observed or projected proportion of tenure-track, U.S. resident, under-represented faculty for that year.
+To estimate the goal of achieve demographic parity, we use 2017 population projections based on the 2010 U.S. census \cite{bureau_2017_2018}. Since universities hire many international faculty, we estimate the goal as a proportion of resident and citizen faculty, based on the mean across higher education between 2013 and 2021. To derive the proportion required for demographic parity in given year, we multiply the proportion of resident and citizen faculty by the projected population proportion.
 
 \subsection*{Institution and Institution-Group Projections}
-For every institution and every institution group in the IPEDS, Carnegie, U.S. News, and Opportunity Insights datsets, we generate an estimate of change in the percentage of under-represented tenure-track faculty using an only least squares regression model in the following specification:
+For every institution and every institution group in the IPEDS, Carnegie, U.S. News, and Opportunity Insights datsets, we estimate the change in the percentage of under-represented tenure-track faculty using a linear regression model:
 
+\begin{center}
 $Y_{pct} = Intercept + \beta_{Year} + \epsilon$
+\end{center}
 
-Institution-level coefficients, p-values, and standard errors for each of the \Sexpr{prettyNum(nrow(subset(institution.models.df, dv==dv.var)),big.mark="," )} models, along with full analysis code, are available on the Open Science Framework.\footnote{INCLUDE LINK HERE}
+We have published analysis code, coefficients, p-values, and standard errors for each of the \Sexpr{prettyNum(nrow(subset(institution.models.df, dv==dv.var)),big.mark="," )} models.\footnote{INCLUDE LINK HERE}
 
 % Across all institutions in the dataset from 2013-2018, the percentage of under-represented tenure-track faculty increased by \Sexpr{prettyNum(coef(summary(linear.m1))['year.zeroed',]['Estimate']*100, digits=2)} percentage points per year (p<0.0001 
 % %R^2 = \Sexpr{prettyNum(summary(linear.m1)$r.squared, digits=2)}
 % ). Within Ivy+ universities, the percentage increased by \Sexpr{prettyNum(subset(ivyplus.models.df, subgroup_value=="True" & dv=="tenured_un_tenured_black_latino_american_indian_alaska_native_hawaiian_pacific_multiracial_total_pct")$year_estimate*100, digits=2)} percentage points per year (p<0.0001). Within R1 universities, PhD-granting institutions classified with "very high research activity", the percentage increased by \Sexpr{prettyNum(subset(carnegie.models.df, subgroup_value==15 & dv=="tenured_un_tenured_black_latino_american_indian_alaska_native_hawaiian_pacific_multiracial_total_pct")$year_estimate*100, digits=2)}  per year (p<0.0001). Within National Liberal Arts Colleges, the percentage increased by \Sexpr{prettyNum(subset(usnews.models.df, subgroup_value=='National Liberal Arts Colleges' & dv=="tenured_un_tenured_black_latino_american_indian_alaska_native_hawaiian_pacific_multiracial_total_pct")$year_estimate*100, digits=2)} percentage points per year (p=\Sexpr{prettyNum(subset(usnews.models.df, subgroup_value=='National Liberal Arts Colleges' & dv=="tenured_un_tenured_black_latino_american_indian_alaska_native_hawaiian_pacific_multiracial_total_pct")$year_pvalue, digits=1)}).
 
 \subsection*{Estimating Un-hired PhDs}
-To simulate the number of un-hired under-represented PhDs, we combine data from the National Science Foundation Survey of Earned Doctorates with IPEDS data about tenure-track faculty. To offer a conservative estimate, we imagine a scenario where no under-represented groups received PhDs before 2007, where 2013 is the first hiring year, and play the simulation forward. Since the average time to tenure is 7 years, the simulation assumes that the number of faculty hired in a given year is 1/7 of the total un-tenured tenure-track faculty the following year. For each year between 2013 and 2020, we subtract the total number of hired under-represented faculty from the cumulative sum of earned PhDs.
+To simulate the number of un-hired, under-represented PhDs, we combine data from the National Science Foundation Survey of Earned Doctorates with IPEDS data about tenure-track faculty. To offer a conservative estimate, we imagine a scenario where no under-represented groups received PhDs before 2007 and where 2013 is the first hiring year. Since the average time to tenure is 7 years (CITE), the simulation assumes that the number of faculty hired in a given year is 1/7 of the total un-tenured, tenure-track faculty the following year. For each year between 2013 and 2020, we subtract the total number of hired under-represented faculty from the cumulative sum of earned PhDs.
 
 
 
@@ -125,9 +134,9 @@ To simulate the number of un-hired under-represented PhDs, we combine data from 
 
 \showmatmethods{} % Display the Materials and Methods section
 
-\acknow{Please include your acknowledgments here, set in a single paragraph. Please do not include any acknowledgments in the Supporting Information, or anywhere else in the manuscript.}
+% \acknow{Please include your acknowledgments here, set in a single paragraph. Please do not include any acknowledgments in the Supporting Information, or anywhere else in the manuscript.}
 
-\showacknow{} % Display the acknowledgments section
+% \showacknow{} % Display the acknowledgments section
 
 % Bibliography
 \bibliography{references}
