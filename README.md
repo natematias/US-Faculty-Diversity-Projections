@@ -7,5 +7,8 @@ By [J. Nathan Matias](https://natematias.com), [Neil Lewis Jr.](https://neillewi
 
 **This repository includes the analysis, code, data, and initial drafts in LaTeX form. This is not the canonical link for the project— see instead the Open Science Framework repository at https://osf.io/ar8pt/**
 
+ ---
 
 ![U.S. higher education will never achieve demographic parity among tenure-track faculty at current rates of change (n= 1,250, p<0.0001,R2 = 0.99). Panels show estimated rates of change for all U.S. Institutions (A), Liberal Arts Colleges (B), Ivy+ Institutions (C), and R1 Institutions (D). Within an institution group, gray lines are individual institutions, green lines are the projected trend for the group, and orange lines are example institutions near the median rate of change for the group. Solid lines are observed trends, and dashed lines are projections.](./figures/institution_group_projections.svg)
+
+***Figure 1**: U.S. higher education will never achieve demographic parity among tenure-track faculty at current rates of change (n= 1,250, p<0.0001,R2 = 0.99). Panels show estimated rates of change for all U.S. Institutions, Liberal Arts Colleges, Ivy+ Institutions , and R1 Institutions. Within an institution group, gray lines are individual institutions, green lines are the projected trend for the group, and orange lines are example institutions near the median rate of change for the group. Solid lines are observed trends, and dashed lines are projections.*
