@@ -1,5 +1,5 @@
 # U.S. Universities Are Not Succeeding in Diversifying Faculty
-By [J. Nathan Matias](https://natematias.com),[Neil Lewis Jr.](https://neillewisjr.com/), [Elan Hope](https://www.prainc.com/about-us/our-staff/elan-hope/)
+By [J. Nathan Matias](https://natematias.com), [Neil Lewis Jr.](https://neillewisjr.com/), [Elan Hope](https://www.prainc.com/about-us/our-staff/elan-hope/)
 
 > U.S. universities have made public commitments to recruit and retain faculty of color. Analysis of three federal datasets shows that at current rates, diversity in U.S. faculty will never reach racial parity. Yet colleges and universities could achieve parity by 2050 by diversifying their faculty at 3.5 times the current pace.
 
